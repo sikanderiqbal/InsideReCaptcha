@@ -1,6 +1,6 @@
 # Summary
 
-A few days ago, Google has introduced a [new version of ReCaptcha](http://googleonlinesecurity.blogspot.com/2014/12/are-you-robot-introducing-no-captcha.html), theorically allowing most users to complete it by only ticking a checkbox. If the user isn't deemed as human by Google, the old version with distorted text appears. Although I used a normal Firefox version, I still had to fill the text captcha after clicking, so it didn't really worked for me. My curiosity induced me to look at the JavaScript in order to know how all this really works...
+A few days ago, Google has introduced a [new version of ReCaptcha](http://googleonlinesecurity.blogspot.com/2014/12/are-you-robot-introducing-no-captcha.html), theoretically allowing most users to complete it by only ticking a checkbox. If the user isn't deemed as human by Google, the old version with distorted text appears. Although I used a normal Firefox version, I still had to fill the text captcha after clicking, so it didn't really work for me. My curiosity induced me to look at the JavaScript in order to know how all this really works...
 
 # What happens on the wire
 
@@ -10,7 +10,7 @@ First, the browser makes the few following requests:
 * `https://www.gstatic.com/recaptcha/api2/r20141202135649/recaptcha__en.js`, which contains common code.
 * `https://apis.google.com/_/scs/apps-static/_/js/` (followed by a bunch of more or less cryptic parameters) which contains other common JavaScript code.
 
-The browser then makes a requests to `https://www.google.com/recaptcha/api2/anchor`, whose response contains the very interesting stuff: a callback to a function called `recaptcha.anchor.Main.init`, which contains two base64-encoded parameters.
+The browser then makes a requests to `https://www.google.com/recaptcha/api2/anchor`, whose response contains very interesting stuff: a callback to a function called `recaptcha.anchor.Main.init`, which contains two base64-encoded parameters.
 
 The first parameter points to a JavaScript file: [`https://www.google.com/js/bg/6yg-ggdQgQAg8SAADJkAjc-JMNnOnYuIGgH_iBV7uf8.js`](https://www.google.com/js/bg/6yg-ggdQgQAg8SAADJkAjc-JMNnOnYuIGgH_iBV7uf8.js). The second one contains *double-*base64-encoded binary data.
 
